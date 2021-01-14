@@ -1,0 +1,22 @@
+<div class=" container row ">
+  <div class="col-lg-6 col-md-6 mb-4" *ngFor="let emp of employees;index as i">
+    <div class="card h-100">
+      <div class="row">
+        <div class="col-6"> <a href="#"><img class="m-2" [src]="emp.photoPath" alt=""></a>
+        </div>
+        <div class="col-6 card-body">
+          <h6 class="card-title">
+            <a class="ItemName" routerLink="/itemDetail">{{i+1}}.
+              {{emp.name|uppercase}} </a>{{ emp.department}}
+          </h6>
+          <div class="m-0 p-0">
+            <p class="card-text"> Gender-{{emp.gender}}
+            </p>
+            <p class="card-text"> email-{{emp.email}}</p>
+            <p class="card-text"> phone-{{emp.phone}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
