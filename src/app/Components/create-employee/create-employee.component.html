@@ -1,0 +1,68 @@
+<form [formGroup]="employeeForm">
+  <div
+    [ngClass]="{'alert alert-warning':employeeForm.get('name').errors&&(employeeForm.get('name').touched||employeeForm.get('name').dirty)}">
+    <label for="InputEmail1">Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name" formControlName="name">
+    <span *ngIf="employeeForm.get('name').errors&&(employeeForm.get('name').touched||employeeForm.get('name').dirty)">
+      <span *ngIf="employeeForm.get('name').errors.required">
+        Required</span></span>
+  </div>
+  <div class="form-group">
+    <label for="InputEmail1">Email address</label>
+    <input type="email" class="form-control" id="InputEmail1" placeholder="Enter email" formControlName="email">
+  </div>
+  <div class="form-group">
+    <label for="InputDOB">Gender</label>
+    <div class="row checkboxes form-control">
+      <span class="col-4">
+        <input type="radio" class="form-check-input" value="Male" name="gender" formControlName="gender">
+        <label for="InputMale">Male</label>
+      </span>
+      <span class="col-4">
+        <input type="radio" class="form-check-input" value="Female" name="gender" formControlName="gender">
+        <label for="InputFemale">Female</label>
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="InputPhone">Phone</label>
+    <input type="text" class="form-control" id="InputPhone1" placeholder="Enter Phone Number" formControlName='phone'>
+  </div>
+  <div class="form-group">
+    <label for="InputDOB">Date Of Birth</label>
+    <input type="date" class="form-control" id="InputDate1" placeholder="Enter email" formControlName="dateOfBirth">
+  </div>
+  <div class="form-group  ">
+    <label for="InputDOB">Contact Preference</label>
+    <div class="row checkboxes form-control">
+      <div class="col-4">
+        <input type="radio" class="form-check-input" value="Phone" name="contactPreference"
+          formControlName="contactPreference">
+        <label for="InputDOB">Phone number</label>
+      </div>
+      <div class="col-4">
+        <input type="radio" class="form-check-input" value="Email" name="contactPreference"
+          formControlName="contactPreference">
+        <label for="InputDOB">Email</label>
+      </div>
+      <div class="col-4">
+        <input type="radio" class="form-check-input" value="Phone & email" name="contactPreference"
+          formControlName="contactPreference">
+        <label for="InputDOB">Both</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Department">Department (drop down)</label>
+    <select class="form-control" formControlName="department">
+      <option *ngFor="let dep of Department">
+        {{dep.name}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName=isActive>
+    <label class="form-check-label" for="exampleCheck1">Is active</label>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="addEmployee()">Submit</button>
+</form>
