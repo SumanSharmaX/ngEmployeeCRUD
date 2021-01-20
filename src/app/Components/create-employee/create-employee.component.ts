@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Department } from 'src/app/Models/Department';
+import { EmployeeService } from 'src/app/Services/employee.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -15,7 +17,7 @@ export class CreateEmployeeComponent implements OnInit {
   {id:1,name:"Engineer"},
   {id:1,name:"Accounant"}
 ];
-  constructor(private fb:FormBuilder) { }
+  constructor(private EmployeeService:EmployeeService,private fb:FormBuilder,private _router:Router) { }
   ngOnInit(): void {
     this.employeeForm=this.fb.group({
       name:['',Validators.required],
@@ -31,9 +33,10 @@ export class CreateEmployeeComponent implements OnInit {
     
   }
   addEmployee(){
-    console.log("1111111111111111111111");
-    console.log(this.employeeForm.value);
-    
+    // console.log("1111111111111111111111");
+    // console.log(this.employeeForm.value);
+    this.EmployeeService.saveEmployee(this.employeeForm.value);
+    this._router.navigate(['EmployeeList']);
   }
 }
 
